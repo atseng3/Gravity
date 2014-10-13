@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  database: gravity_development
+  host: localhost
+  username: albert
+  pool: 5
+  timeout: 5000
