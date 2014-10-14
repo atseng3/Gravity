@@ -1,0 +1,24 @@
+<% action_url = (action == :new) ? subscriptions_url : edit_subsciption_url(@subscription) %>
+
+<form action="<%= action_url %>" method="post">
+	<% if action == :edit %>
+		<input type="hidden" name="_method" value="put">
+	<% end %>
+
+    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+    
+    <label>Subscription: <%= @subscription.site %></label>
+    
+    <input type="hidden" name="subscription[user_id]" value="<%= current_user ? current_user.id : nil %>" id="subscription[user_id]">
+    
+    <label for="Site">Site</label>
+    <input type="text" name="subscription[site]" value="<%= @subscription.site %>" id="Site">
+    
+    <label for="Amount">Amount</label>
+    <input type="text" name="subscription[amount]" value="<%= @subscription.amount %>"id="Amount">
+    
+    <label for="Duration">Duration</label>
+    <input type="text" name="subscription[duration]" value="<%= @subscription.duration %>"id="Duration">
+    
+    <input type="submit" value="Submit">
+</form>

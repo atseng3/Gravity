@@ -14,6 +14,7 @@ class SubscriptionsController < ApplicationController
   
   # GET /subscriptions/new
   def new
+    @subscription = Subscription.new
   end
 
   # GET /subscriptions/1/edit  
@@ -23,6 +24,8 @@ class SubscriptionsController < ApplicationController
   # POST /subscriptions
   # POST /subscriptions.json  
   def create
+    # create and save subscription with strong params
+    # @subscription = Subscription.new(params[])
   end
   
   # PATCH/PUT /subscriptions/1
