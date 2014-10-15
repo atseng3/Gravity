@@ -1,0 +1,33 @@
+<% action_url = (action == :new) ? user_subscriptions_url : edit_user_subsciption_url(@user_subscription) %>
+
+<form action="<%= action_url %>" method="post">
+	<% if action == :edit %>
+		<input type="hidden" name="_method" value="put">
+	<% end %>
+
+    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+    
+    Select from below:<br/>
+    <ul>
+    <% @subscriptions.each do |subscription| %>
+        <li><%= subscription.site %></li>
+    <% end %>
+    </ul>
+    <!-- are these fields needed?? 
+    <input type="hidden" name="subscription[name]" id="Subscription"><br/>
+    <input type="hidden" name="user_subscription[expires_at]" value="">
+    -->
+    
+    Of enter one:<br/>
+    <label for="Site">Site</label>
+    <input type="text" name="subscription[site]" value="" id="Site"><br/>
+    
+    <label for="Amount">Amount</label>
+    <input type="text" name="subscription[amount]" value=""id="Amount"><br/>
+    
+    <label for="Duration">Duration</label>
+    <input type="text" name="subscription[duration]" value=""id="Duration"><br/>
+    
+    
+    <input type="submit" value="Submit">
+</form>

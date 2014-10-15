@@ -1,2 +1,11 @@
-<h1>All Subscriptions</h1>
-<%= @subscriptions %>
+<h1>All Subscriptions in our database</h1>
+<ul>
+<% @subscriptions.each do |subscription| %>
+    <li><%= subscription.site %>
+        <ul>
+            <li>$<%= subscription.amount %></li>
+            <li><%= subscription.duration %> days</li>   
+        </ul>
+    </li>
+<% end %>
+</ul>

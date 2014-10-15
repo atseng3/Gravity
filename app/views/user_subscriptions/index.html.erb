@@ -1,0 +1,8 @@
+<h1>All User Subscriptions</h1>
+<ul>
+<% @user_subscriptions.each do |user_subscription| %>
+    <li>Belongs to user <%= user_subscription.user_id %>, 
+        Belongs to subscription <%= user_subscription.subscription_id %>, 
+        expires at <%= user_subscription.expires_at %></li>
+<% end %>
+</ul>

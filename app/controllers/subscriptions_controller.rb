@@ -1,4 +1,8 @@
 class SubscriptionsController < ApplicationController
+  # Subscription fields
+  # t.string   "site"
+  # t.decimal  "amount",     precision: 8, scale: 2
+  # t.integer  "duration"
   
   # GET /subscriptions
   # GET /subscriptions.json
@@ -37,4 +41,13 @@ class SubscriptionsController < ApplicationController
   # DELETE /subscriptions/1.json  
   def destroy
   end
+  
+  private
+    # def set_user
+    #   @user = User.find(params[:id])
+    # end
+  
+    def subscription_params
+      params.require(:subscription).permit(:site, :amount, :duration)
+    end
 end
