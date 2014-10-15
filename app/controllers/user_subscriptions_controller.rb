@@ -61,16 +61,22 @@ class UserSubscriptionsController < ApplicationController
       @user.user_subscriptions.build( :subscription_id => @subscription.id, :expires_at => expires_at ) 
     
       if @user.save
-        # temporary redirect to /subscriptions
-        format.html { redirect_to subscriptions_url, notice: 'Your subscription was successfully created.' }
-        # format.json { render action: 'show', status: :created, location: @user }
+        respond_to do |format|
+          # temporary redirect to /subscriptions
+          format.html { redirect_to subscriptions_url, notice: 'Your subscription was successfully created.' }
+          # format.json { render action: 'show', status: :created, location: @user }
+        end
       else 
-        format.html { render action: 'new', notice: @user.errors }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        respond_to do |format|
+          format.html { render action: 'new', notice: @user.errors }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
       end      
     else
-      format.html { render action: 'new', notice: @subscription.errors }
-      format.json { render json: @subscription.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        format.html { render action: 'new', notice: @subscription.errors }
+        format.json { render json: @subscription.errors, status: :unprocessable_entity }
+      end
     end
   end
   

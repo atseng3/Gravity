@@ -1,0 +1,19 @@
+<h1>Subscription</h1>
+<p>
+  <strong>Site</strong>
+  <%= @subscription.site %>
+</p>
+
+<p>
+  <strong>Amount</strong>
+  <%= @subscription.amount %>
+</p>
+
+<p>
+  <strong>Duration</strong>
+  <%= @subscription.duration %>
+</p>
+
+<%= link_to 'Edit', edit_subscription_url(@subscription) %> |
+<%= link_to 'Back', subscriptions_url %> | 
+<%= link_to 'Delete', subscription_url(@subscription), method: :delete, data: { confirm: 'Are you sure?' } %>

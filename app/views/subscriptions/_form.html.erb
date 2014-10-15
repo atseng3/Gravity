@@ -1,8 +1,8 @@
-<% action_url = (action == :new) ? subscriptions_url : edit_subsciption_url(@subscription) %>
+<% action_url = (action == :new) ? subscriptions_url : subscription_url(@subscription) %>
 
 <form action="<%= action_url %>" method="post">
 	<% if action == :edit %>
-		<input type="hidden" name="_method" value="put">
+		<input type="hidden" name="_method" value="patch">
 	<% end %>
 
     <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
@@ -22,3 +22,5 @@
     
     <input type="submit" value="Submit">
 </form>
+
+<%= link_to %>
