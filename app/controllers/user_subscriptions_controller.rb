@@ -14,19 +14,23 @@ class UserSubscriptionsController < ApplicationController
   # GET /user_subscriptions/1
   # GET /user_subscriptions/1.json
   def show
+    @user_subscription = UserSubscription.find(params[:id])
+    render :show
   end
   
   # GET /user_subscriptions/new
   def new
     @user_subscription = UserSubscription.new
     @subscriptions = Subscription.all
+    render :new
   end
 
   # GET /user_subscriptions/1/edit  
   def edit
     # find by id, what kind of strong params?
-    # @user_subscription = UserSubscription.find(params[:id])
+    @user_subscription = UserSubscription.find(params[:id])
     @subscriptions = Subscription.all
+    render :edit
   end
   
   # POST /user_subscriptions
