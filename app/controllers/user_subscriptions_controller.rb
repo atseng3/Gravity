@@ -4,6 +4,11 @@ class UserSubscriptionsController < ApplicationController
   # t.integer  "subscription_id", null: false
   # t.datetime "expires_at"
   
+  # Reminder fields
+  # t.integer "user_subscription_id", null: false
+  # t.integer "days_before", default_to: 1
+  # t.boolean "active", default_to: true
+  
   # GET /user_subscriptions
   # GET /user_subscriptions.json
   def index
@@ -55,6 +60,11 @@ class UserSubscriptionsController < ApplicationController
     
     @user = current_user
     @subscription = Subscription.find_by_site(subscription_params[:site]) ? Subscription.find_by_site(subscription_params[:site]) : Subscription.new(subscription_params)
+    
+    # This part is not not tested yet, @subscription.save should create and save the reminder as well.
+    @subscription.reminder.biild(reminder_params)
+    #
+    
     if @subscription.save
       expires_at = Time.new() + (@subscription.duration.to_i * 24 * 60 * 60)
     

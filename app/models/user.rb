@@ -21,7 +21,8 @@ class User < ActiveRecord::Base
   has_many :user_subscriptions, 
            :primary_key => :id,
            :foreign_key => :user_id,
-           :class_name => 'UserSubscription'
+           :class_name => 'UserSubscription',
+           :dependent => :destroy
          
   has_many :subscriptions, :through => :user_subscriptions, :source => :subscription
 end
