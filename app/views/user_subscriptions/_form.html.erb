@@ -1,33 +1,38 @@
 <% action_url = (action == :new) ? user_subscriptions_url : edit_user_subscription_url(@user_subscription) %>
 
 <form action="<%= action_url %>" method="post">
-	<% if action == :edit %>
-		<input type="hidden" name="_method" value="put">
-	<% end %>
-
     <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
     
-    Select from below:<br/>
-    <ul>
-    <% @subscriptions.each do |subscription| %>
-        <li><%= subscription.site %></li>
-    <% end %>
-    </ul>
-    <!-- are these fields needed?? 
-    <input type="hidden" name="subscription[name]" id="Subscription"><br/>
-    <input type="hidden" name="user_subscription[expires_at]" value="">
-    -->
+	<% if action == :edit %>
+		<input type="hidden" name="_method" value="patch">
+	<% else %>
+
     
-    Of enter one:<br/>
+        Select from below:<br/>
+        <ul>
+        <% @subscriptions.each do |subscription| %>
+            <li>
+                <%= subscription.site %>
+            
+                <!-- This part allows a user to click on the name and select that as the site
+                <input type="hidden" name="subscription[id]" value="<%= subscription.id %>">
+                <input type="submit" value="<%= subscription.site %>"> -->
+            </li>
+        <% end %>
+        </ul>
+        Or enter one:<br/>
+    <% end %>
     <label for="Site">Site</label>
     <input type="text" name="subscription[site]" value="" id="Site"><br/>
     
     <label for="Amount">Amount</label>
-    <input type="text" name="subscription[amount]" value=""id="Amount"><br/>
+    <input type="num" name="subscription[amount]" value=""id="Amount"><br/>
     
     <label for="Duration">Duration</label>
-    <input type="text" name="subscription[duration]" value=""id="Duration"><br/>
+    <input type="num" name="subscription[duration]" value=""id="Duration"><br/>
     
+    <label for="SiteLink">Site Link</label>
+    <input type="url" name="subscription[site_link]" value=""id="SiteLink"><br/>
     
     <input type="submit" value="Submit">
 </form>

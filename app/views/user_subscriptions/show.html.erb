@@ -1,0 +1,20 @@
+<h1>User Subscription Show page</h1>
+
+<p>
+  <strong>User:</strong>
+  <%= User.find(@user_subscription.user_id).email %>
+</p>
+
+<p>
+  <strong>Subscription:</strong>
+  <%= Subscription.find(@user_subscription.subscription_id).site %>
+</p>
+
+<p>
+  <strong>Expires on:</strong>
+  <%= @user_subscription.expires_at.asctime %>
+</p>
+
+<%= link_to 'Edit', edit_user_subscription_url(@user_subscription) %> |
+<%= link_to 'Back', user_subscriptions_url %> | 
+<%= link_to 'Delete', user_subscription_url(@user_subscription), method: :delete, data: { confirm: 'Are you sure?' } %>

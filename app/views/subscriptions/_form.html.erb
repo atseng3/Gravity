@@ -15,12 +15,15 @@
     <input type="text" name="subscription[site]" value="<%= @subscription.site %>" id="Site">
     
     <label for="Amount">Amount</label>
-    <input type="text" name="subscription[amount]" value="<%= @subscription.amount %>"id="Amount">
+    <input type="num" name="subscription[amount]" value="<%= @subscription.amount %>"id="Amount">
     
     <label for="Duration">Duration</label>
-    <input type="text" name="subscription[duration]" value="<%= @subscription.duration %>"id="Duration">
+    <input type="num" name="subscription[duration]" value="<%= @subscription.duration %>"id="Duration">
+    
+    <label for="SiteLink">Site Link</label>
+    <input type="url" name="subscription[site_link]" value="<%= @subscription.site_link %>"id="SiteLink">
     
     <input type="submit" value="Submit">
 </form>
 
-<%= link_to %>
+<%= link_to 'Back', subscriptions_url %>

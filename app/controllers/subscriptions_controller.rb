@@ -78,6 +78,6 @@ class SubscriptionsController < ApplicationController
     # end
   
     def subscription_params
-      params.require(:subscription).permit(:site, :amount, :duration)
+      params.require(:subscription).permit(:site, :amount, :duration, :site_link)
     end
 end

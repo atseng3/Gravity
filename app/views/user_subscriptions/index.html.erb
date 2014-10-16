@@ -1,8 +1,9 @@
 <h1>All User Subscriptions</h1>
+<%= link_to 'Add a new subscription!', new_user_subscription_url %>
 <ul>
 <% @user_subscriptions.each do |user_subscription| %>
-    <li>Belongs to user <%= user_subscription.user_id %>, 
-        Belongs to subscription <%= user_subscription.subscription_id %>, 
-        expires at <%= user_subscription.expires_at %></li>
+    <li><%= User.find(user_subscription.user_id).email %> is subscripted to 
+        <%= Subscription.find(user_subscription.subscription_id).site %>, 
+        expires on <%= user_subscription.expires_at.asctime  %></li>
 <% end %>
 </ul>

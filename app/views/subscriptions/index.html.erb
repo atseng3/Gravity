@@ -1,7 +1,10 @@
 <h1>All Subscriptions in our database</h1>
+NOTE! This page should only be admin only! especially this NEW button!<br/>
+<%= link_to 'New Subscription', new_subscription_url %><br/>
 <ul>
 <% @subscriptions.each do |subscription| %>
-    <li><%= subscription.site %>
+    <li><%= link_to subscription.site, subscription_url(subscription) %> ==>
+        <a href="<%= subscription.site_link %>">CANCEL</a>
         <ul>
             <li>$<%= subscription.amount %></li>
             <li><%= subscription.duration %> days</li>   
@@ -9,5 +12,3 @@
     </li>
 <% end %>
 </ul>
-
-<%= link_to 'New', new_subscription_url %>

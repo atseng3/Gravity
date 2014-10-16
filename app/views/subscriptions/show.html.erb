@@ -1,17 +1,18 @@
-<h1>Subscription</h1>
+<h1><%= @subscription.site %></h1>
+
 <p>
-  <strong>Site</strong>
-  <%= @subscription.site %>
+  <strong>Amount:</strong>
+  $<%= @subscription.amount %>
 </p>
 
 <p>
-  <strong>Amount</strong>
-  <%= @subscription.amount %>
+  <strong>Duration:</strong>
+  <%= @subscription.duration %> days
 </p>
 
 <p>
-  <strong>Duration</strong>
-  <%= @subscription.duration %>
+  <strong>Site Link:</strong>
+  <%= @subscription.site_link %>
 </p>
 
 <%= link_to 'Edit', edit_subscription_url(@subscription) %> |
