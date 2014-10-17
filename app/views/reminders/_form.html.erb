@@ -1,12 +1,12 @@
-<% action_url = (action == :new) ? reminders_url : reminder_url(@reminder) %>
+<% action_url = (action == :new) ? user_subscription_reminders_url(@user_subscription) : reminder_url(@reminder) %>
 
 <form action="<%= action_url %>" method="post">
     <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 	<% if action == :edit %>
 		<input type="hidden" name="_method" value="patch">
         
-        <label>Subscription: <%= @reminder.user_subscription.subscription.site %></label><br>
-        <input type="hidden" name="reminder[user_subscription_id]" value="<%= @reminder.user_subscription.id %>" id="reminder[user_subscription_id]">
+        <label>Subscription: <%= @user_subscription.subscription.site %></label><br>
+        <input type="hidden" name="reminder[user_subscription_id]" value="<%= @user_subscription.id %>" id="reminder[user_subscription_id]">
     <% else %>
         Select which subscription this is for:<br>
         <select name="reminder[user_subscription_id]">
@@ -41,4 +41,4 @@
     <input type="submit" value="Submit">
 </form>
 
-<%= link_to 'Back', reminders_url %>
+<%= link_to 'Back', user_subscription_reminders_url(@user_subscription) %>

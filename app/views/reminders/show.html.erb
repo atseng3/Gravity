@@ -12,5 +12,5 @@
 </p>
 
 <%= link_to 'Edit', edit_reminder_url(@reminder) %> |
-<%= link_to 'Back', reminders_url %> | 
+<%= link_to 'Back', user_subscription_reminders_url(@user_subscription) %> | 
 <%= link_to 'Delete', reminder_url(@reminder), method: :delete, data: { confirm: 'Are you sure?' } %>

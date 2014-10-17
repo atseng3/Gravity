@@ -3,8 +3,14 @@ Gravity::Application.routes.draw do
   devise_for :users
   resources :users
   resources :subscriptions
-  resources :user_subscriptions
-  resources :reminders
+  resources :user_subscriptions, shallow: true do
+    resources :reminders
+  end
+  # resources :reminders
+  
+  # scope '/admin' do
+  #   resources :posts, :comments
+  # end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -8,6 +8,7 @@ class RemindersController < ApplicationController
   # GET /reminders.json
   def index
     @reminders = Reminder.all
+    @user_subscription = UserSubscription.find(params[:user_subscription_id])
     render :index
   end
   
@@ -15,16 +16,19 @@ class RemindersController < ApplicationController
   # GET /reminders/1.json
   def show
     @reminder = Reminder.find(params[:id])
+    @user_subscription = @reminder.user_subscription
   end
   
   # GET /reminders/new
   def new
     @reminder = Reminder.new
+    @user_subscription = UserSubscription.find(params[:user_subscription_id])
   end
 
   # GET /reminders/1/edit  
   def edit
     @reminder = Reminder.find(params[:id])
+    @user_subscription = @reminder.user_subscription
   end
   
   # POST /reminders
@@ -32,6 +36,8 @@ class RemindersController < ApplicationController
   def create
     # create and save reminder with strong params
     @reminder = Reminder.new(reminder_params)
+    @user_subscription = UserSubscription.find(params[:user_subscription_id])
+    @user_subscription.reminders.build(reminder_params)
     if @reminder.save
       respond_to do |format|
         format.html { redirect_to reminder_url(@reminder), notice: 'Reminder was successully created.'}
