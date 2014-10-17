@@ -6,7 +6,7 @@ class UserSubscriptionsController < ApplicationController
   
   # Reminder fields
   # t.integer "user_subscription_id", null: false
-  # t.integer "days_before", default_to: 1
+  # t.integer "days", default_to: 1
   # t.boolean "active", default_to: true
   
   # GET /user_subscriptions
@@ -57,18 +57,21 @@ class UserSubscriptionsController < ApplicationController
     ### - find user
     ### - create/find subscription 
     ### - @user.user_subscription.create( :subscription_id => @subscription.id )
-    
+
     @user = current_user
-    @subscription = Subscription.find_by_site(subscription_params[:site]) ? Subscription.find_by_site(subscription_params[:site]) : Subscription.new(subscription_params)
+    @subscription = Subscription.find(subscription_params[:id]) ? Subscription.find(subscription_params[:id]) : Subscription.new(subscription_params)
     
     # This part is not not tested yet, @subscription.save should create and save the reminder as well.
-    @subscription.reminder.biild(reminder_params)
-    #
+    # self.reminders.build(reminder_params)
     
     if @subscription.save
       expires_at = Time.new() + (@subscription.duration.to_i * 24 * 60 * 60)
-    
+      
+      # generate current_user's user_subscription.
+      # question: can a user have more than 1 of the same subscription?
       @user.user_subscriptions.build( :subscription_id => @subscription.id, :expires_at => expires_at ) 
+
+      @user.user_subscriptions.last.reminders.build(reminder_params)
     
       if @user.save
         respond_to do |format|
@@ -106,6 +109,10 @@ class UserSubscriptionsController < ApplicationController
     # end
   
     def subscription_params
-      params.require(:subscription).permit(:site, :amount, :duration)
+      params.require(:subscription).permit(:id, :site, :amount, :duration)
+    end
+    
+    def reminder_params
+      params.require(:reminder).permit(:user_subscription_id, :days, :active)
     end
 end

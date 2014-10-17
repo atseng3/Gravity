@@ -34,36 +34,31 @@ User clicks submit button
 	<% if action == :edit %>
 		<input type="hidden" name="_method" value="patch">
 	<% else %>
-
     
         Select from below:<br/>
-        <ul>
-        <% @subscriptions.each do |subscription| %>
-            <li>
-                <%= subscription.site %>
-            
-                <!-- This part allows a user to click on the name and select that as the site
-                <input type="hidden" name="subscription[id]" value="<%= subscription.id %>">
-                <input type="submit" value="<%= subscription.site %>"> 
-                -->
-            </li>
-        <% end %>
-        </ul>
+
+        <select name="subscription[id]">
+            <option selected="selected" disabled="disabled">Choose option</option>
+            <% @subscriptions.each do |subscription| %>
+                <option value="<%= subscription.id %>"><%= subscription.site %></option>
+            <% end %>
+        </select>
+        <br><br><br>
         Or enter one:<br/>
     <% end %>
     <label for="Site">Site</label>
     <input type="text" name="subscription[site]" value="" id="Site"><br/>
-    
+
     <label for="Amount">Amount</label>
     <input type="num" name="subscription[amount]" value=""id="Amount"><br/>
-    
+
     <label for="Duration">Duration</label>
     <input type="num" name="subscription[duration]" value=""id="Duration"><br/>
-    
+
     <label for="SiteLink">Site Link</label>
     <input type="url" name="subscription[site_link]" value=""id="SiteLink"><br/>
-    
-    <input type="checkbox" name="reminder[active]" value="true" id="Reminder">
+
+    <input type="checkbox" name="reminder[active]" checked value="true" id="Reminder">
     <label for="Reminder">Set up reminders</label><br/>
     
     <input type="submit" value="Submit">

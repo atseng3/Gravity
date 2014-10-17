@@ -1,0 +1,9 @@
+<h1>All Reminders in our database</h1>
+
+<%= link_to 'New Reminder', new_reminder_url %><br/>
+<ul>
+<% @reminders.each do |reminder| %>
+    <li>Reminder #<%= link_to reminder.id, reminder_url(reminder) %>,User Subscription #<%= reminder.user_subscription_id %><%= link_to 'DELETE', reminder_url(reminder), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+<% end %>
+</ul>

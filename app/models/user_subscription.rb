@@ -14,10 +14,11 @@ class UserSubscription < ActiveRecord::Base
              :primary_key => :id,
              :foreign_key => :subscription_id,
              :class_name => 'Subscription'
-             
-  has_one :reminders,
-          :primary_key => :id, 
-          :foreign_key => :user_subscription_id,
-          :class_name => 'Reminder',
-          :dependent => :destroy
+# not finished yet             
+  has_many :reminders,
+           :primary_key => :id,
+           :foreign_key => :user_subscription_id,
+           :class_name => 'Reminder',
+           :dependent => :destroy
+           # :inverse_of => :user_subscription
 end

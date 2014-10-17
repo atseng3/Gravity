@@ -2,7 +2,7 @@
 <%= link_to 'Add a new subscription!', new_user_subscription_url %>
 <ul>
 <% @user_subscriptions.each do |user_subscription| %>
-    <li><%= User.find(user_subscription.user_id).email %> is subscripted to 
+    <li><%= user_subscription.id %>    <%= User.find(user_subscription.user_id).email %> is subscripted to 
         <%= Subscription.find(user_subscription.subscription_id).site %>, 
         expires on <%= user_subscription.expires_at.asctime  %></li>
 <% end %>

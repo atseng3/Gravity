@@ -1,0 +1,44 @@
+<% action_url = (action == :new) ? reminders_url : reminder_url(@reminder) %>
+
+<form action="<%= action_url %>" method="post">
+    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+	<% if action == :edit %>
+		<input type="hidden" name="_method" value="patch">
+        
+        <label>Subscription: <%= @reminder.user_subscription.subscription.site %></label><br>
+        <input type="hidden" name="reminder[user_subscription_id]" value="<%= @reminder.user_subscription.id %>" id="reminder[user_subscription_id]">
+    <% else %>
+        Select which subscription this is for:<br>
+        <select name="reminder[user_subscription_id]">
+            <option selected="selected" disabled="disabled">Choose option</option>
+            <% current_user.user_subscriptions.each do |user_subscription| %>
+            <option value="<%= user_subscription.id %>"><%= user_subscription.subscription.site %></option>
+            <% end %>
+        </select>
+	<% end %>
+    
+    <br>
+    <br>
+    
+    <input id="Days" type="num" name="reminder[days]" value="<%= @reminder.days %>">
+    <label for="Days">Days</label><br><br>
+    
+    <!--
+        prefilling form solution for now
+    -->
+    <% if @reminder.active %>
+    <input id="Active" type="radio" name="reminder[active]" checked value="true">
+    <label for="Active">Active</label>
+    <input id="Inactive" type="radio" name="reminder[active]" value="false">
+    <label for="Inactive">Inactive</label><br>
+    <% else %>
+    <input id="Active" type="radio" name="reminder[active]" value="true">
+    <label for="Active">Active</label>
+    <input id="Inactive" type="radio" name="reminder[active]" checked value="false">
+    <label for="Inactive">Inactive</label><br>
+    <% end %>
+    
+    <input type="submit" value="Submit">
+</form>
+
+<%= link_to 'Back', reminders_url %>

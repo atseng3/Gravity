@@ -1,0 +1,16 @@
+<h1>Reminder Show page</h1>
+<h2>Reminder for <%= @reminder.user_subscription.subscription.site%></h2>
+
+<p>
+  <strong>Days:</strong>
+  <%= @reminder.days %> days
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @reminder.active %>
+</p>
+
+<%= link_to 'Edit', edit_reminder_url(@reminder) %> |
+<%= link_to 'Back', reminders_url %> | 
+<%= link_to 'Delete', reminder_url(@reminder), method: :delete, data: { confirm: 'Are you sure?' } %>
