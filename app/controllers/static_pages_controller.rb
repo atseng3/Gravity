@@ -1,5 +1,11 @@
 class StaticPagesController < ApplicationController
-  def home
-    render :home
+  
+  def sohp
+    render :sohp
   end
+  
+  def sihp
+    render :sihp
+  end
+  
 end
