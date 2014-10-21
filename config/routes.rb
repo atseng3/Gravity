@@ -1,6 +1,6 @@
 Gravity::Application.routes.draw do
   root :to => "static_pages#sohp"
-  get '/sihp' => "static_pages#sihp"
+  # get '/sihp' => "static_pages#sihp"
   devise_for :users
   resources :users
   resources :subscriptions

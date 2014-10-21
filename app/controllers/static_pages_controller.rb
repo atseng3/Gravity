@@ -4,8 +4,8 @@ class StaticPagesController < ApplicationController
     render :sohp
   end
   
-  def sihp
-    render :sihp
-  end
+  # def sihp
+  #   render :sihp
+  # end
   
 end

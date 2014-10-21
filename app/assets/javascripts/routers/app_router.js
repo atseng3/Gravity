@@ -1,17 +1,25 @@
 App.Routers.AppRouter = Backbone.Router.extend({
   routes: {
-    "": "todosIndex",
+    "": "homePage",
     "todos/new": "todosNew",
     "todos/:id": "todosShow"
   },
 
-  todosIndex: function () {
+  homePage: function () {
     // App.Collections.todos.fetch();
     //
     // var indexView = new App.Views.TodosIndex({
     //   collection: App.Collections.todos
     // });
-    console.log('asdf');
+    console.log('here');
+    
+    // there are 2 views for the home page: SOHP, SIHP.
+    // how to do that?
+    // ruby html.erb should display SOHP for SEO optimization.
+    // javascript jst should display SIHP for dynamic rendering.
+    
+    
+    
     this._swapView(indexView);
   },
 
