@@ -15,8 +15,11 @@
 //= jquery.serializeJSON
 //= require underscore
 //= require backbone
-// require turbolinks
-//= require_tree .
+//= require gravity
+//= require_tree ./models
+//= require_tree ./views
+//= require_tree ./collections
+//= require_tree ./routers
 
 
 $(document).ready(function(){

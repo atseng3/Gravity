@@ -7,10 +7,10 @@ App.Routers.AppRouter = Backbone.Router.extend({
 
   SIHP: function () {
     // App.Collections.todos.fetch();
-    //
-    // var indexView = new App.Views.TodosIndex({
-    //   collection: App.Collections.todos
-    // });
+
+    var SIHPView = new App.Views.SIHPView({
+      // collection: App.Collections.todos
+    });
     console.log('here');
     
     // there are 2 views for the home page: SOHP, SIHP.
@@ -20,7 +20,7 @@ App.Routers.AppRouter = Backbone.Router.extend({
     
     
     
-    this._swapView(indexView);
+    this._swapView(SIHPView);
   },
 
   todosNew: function () {
