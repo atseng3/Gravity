@@ -5,6 +5,7 @@ App.Collections.Subscriptions = Backbone.Collection.extend({
    //
    // url: function() {
    //     return '/api/todos/' + this.todo.get('id') + '/comments';
+   //     or return this.todo.url() + '/comments'
    // },
    // initialize: function(models, options) {
    //     this.todo = options.todo;
@@ -18,3 +19,5 @@ App.Collections.Subscriptions = Backbone.Collection.extend({
 // var todoComments = new Todo.Collections.TodoComments([], {
 //    todo: todo
 // });
+
+// need to call save and then fetch to have updated collection
