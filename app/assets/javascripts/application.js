@@ -12,7 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= jquery.serializeJSON
+//= require underscore
+//= require backbone
+// require turbolinks
 //= require_tree .
 
 
