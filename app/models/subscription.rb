@@ -11,4 +11,6 @@ class Subscription < ActiveRecord::Base
            :dependent => :destroy
          
   has_many :users, :through => :user_subscriptions, :source => :user
+  
+  validates :site, :amount, :duration, :presence => true
 end

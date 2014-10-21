@@ -21,4 +21,6 @@ class UserSubscription < ActiveRecord::Base
            :class_name => 'Reminder',
            :dependent => :destroy
            # :inverse_of => :user_subscription
+           
+  validates :user, :subscription, :presence => true
 end

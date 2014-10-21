@@ -1,11 +1,11 @@
 App.Routers.AppRouter = Backbone.Router.extend({
   routes: {
-    "": "homePage",
+    "": "SIHP",
     "todos/new": "todosNew",
     "todos/:id": "todosShow"
   },
 
-  homePage: function () {
+  SIHP: function () {
     // App.Collections.todos.fetch();
     //
     // var indexView = new App.Views.TodosIndex({
