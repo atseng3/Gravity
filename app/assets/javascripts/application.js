@@ -17,11 +17,12 @@
 //= require backbone
 //= require gravity
 //= require_tree ./models
-//= require_tree ./views
 //= require_tree ./collections
+//= require_tree ../templates
+//= require_tree ./views
 //= require_tree ./routers
 
 
-$(document).ready(function(){
-    $("#tooltip").tooltip();
-});
+// $(document).ready(function(){
+//     $("#tooltip").tooltip();
+// });

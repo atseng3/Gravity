@@ -21,6 +21,7 @@ module Gravity
     
     # this is for Heroku, do not compile assets on initialize 
     config.assets.initialize_on_precompile = false
+    config.assets.paths << "app/assets/templates"
     
     # config.i18n.default_locale = :de
   end

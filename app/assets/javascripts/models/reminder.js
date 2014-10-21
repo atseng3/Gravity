@@ -1,3 +1,3 @@
-App.Models.Reminder = Backbone.Models.extend({
+App.Models.Reminder = Backbone.Model.extend({
     urlRoot: '/reminders'
 });

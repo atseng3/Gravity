@@ -6,8 +6,10 @@ window.App = {
   Views: {},
 
   initialize: function () {
-    new App.Routers.AppRouter();
-    Backbone.history.start();
+      App.Collections.users = new App.Collections.Users();
+      // App.Collections.users.fetch();
+      new App.Routers.AppRouter();
+      Backbone.history.start();
   }
 };
 

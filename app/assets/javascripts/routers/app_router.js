@@ -1,26 +1,22 @@
 App.Routers.AppRouter = Backbone.Router.extend({
   routes: {
     "": "SIHP",
+    "users": "showUsers",
     "todos/new": "todosNew",
     "todos/:id": "todosShow"
   },
 
   SIHP: function () {
-    // App.Collections.todos.fetch();
-
-    var SIHPView = new App.Views.SIHPView({
-      // collection: App.Collections.todos
-    });
-    console.log('here');
-    
-    // there are 2 views for the home page: SOHP, SIHP.
-    // how to do that?
-    // ruby html.erb should display SOHP for SEO optimization.
-    // javascript jst should display SIHP for dynamic rendering.
-    
-    
-    
-    this._swapView(SIHPView);
+      var SIHPView = new App.Views.SIHPView({});
+      this._swapView(SIHPView);
+  },
+  
+  showUsers: function() {
+      App.Collections.users.fetch();
+      var UsersView = new App.Views.UsersView({
+          collection: App.Collections.users
+      });
+      this._swapView(UsersView);
   },
 
   todosNew: function () {

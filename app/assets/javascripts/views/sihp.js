@@ -1,9 +1,14 @@
 App.Views.SIHPView = Backbone.View.extend({
-    initialize: function() {
-        
-    },
+    template: JST['static_pages/sihp'],
+    
+    // initialize: function(options) {
+    //     this.collection = options.collection
+    // },
     render: function() {
-        this.$el = '<div>Hi</div>';
+        var renderedContent = this.template({
+           users: this.collection
+        });
+        this.$el.html(renderedContent);
         return this;
     }
 });
