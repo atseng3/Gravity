@@ -8,13 +8,15 @@ class SubscriptionsController < ApplicationController
   # GET /subscriptions.json
   def index
     @subscriptions = Subscription.all
-    render :index
+    render :json => @subscriptions
+    # render :index
   end
   
   # GET /subscriptions/1
   # GET /subscriptions/1.json
   def show
     @subscription = Subscription.find(params[:id])
+    render :json => @subscription
   end
   
   # GET /subscriptions/new
@@ -33,14 +35,16 @@ class SubscriptionsController < ApplicationController
     # create and save subscription with strong params
     @subscription = Subscription.new(subscription_params)
     if @subscription.save
-      respond_to do |format|
-        format.html { redirect_to subscription_url(@subscription), notice: 'Subscription was successully created.'}
-      end
+      render :json => @subscription
+      # respond_to do |format|
+      #   format.html { redirect_to subscription_url(@subscription), notice: 'Subscription was successully created.'}
+      # end
     else
-      respond_to do |format|
-        format.html { render action: 'new', notice: @subscription.errors }
-        format.json { render json: @subscription.errors, status: :unprocessable_entity }
-      end
+      render :json => @subscription.errors, status: :unprocessable_entity
+      # respond_to do |format|
+      #   format.html { render action: 'new', notice: @subscription.errors }
+      #   format.json { render json: @subscription.errors, status: :unprocessable_entity }
+      # end
     end
   end
   
@@ -50,14 +54,17 @@ class SubscriptionsController < ApplicationController
     @subscription = Subscription.find(params[:id])
     success = @subscription.update(subscription_params)
     if success
-      respond_to do |format|
-        format.html { redirect_to subscription_url(@subscription), notice: 'Subscription was successully updated.'}
-      end
+      render :json => @subscription
+      # respond_to do |format|
+      #   format.html { redirect_to subscription_url(@subscription), notice: 'Subscription was successully updated.'}
+      #   format.json { render json: @subscription }
+      # end
     else
-      respond_to do |format|
-        format.html { render action: 'edit', notice: @subscription.errors }
-        format.json { render json: @subscription.errors, status: :unprocessable_entity }
-      end
+      render :json => @subscription.errors, status: :unprocessable_entity
+      # respond_to do |format|
+      #   format.html { render action: 'edit', notice: @subscription.errors }
+      #   format.json { render json: @subscription.errors, status: :unprocessable_entity }
+      # end
     end
   end
   

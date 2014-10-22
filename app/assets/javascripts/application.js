@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= jquery.serializeJSON
+//= require jquery.serializeJSON
 //= require underscore
 //= require backbone
 //= require gravity
