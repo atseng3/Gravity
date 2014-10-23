@@ -1,0 +1,10 @@
+<h1>All Subscriptions</h1>
+<ul>
+    <% subscriptions.each(function(subscription) { %>
+        <li>
+            <a href="#subscriptions/<%= subscription.id %>">
+                <%= subscription.escape("site") %>
+            </a>
+        </li>
+    <% }) %>
+</ul>

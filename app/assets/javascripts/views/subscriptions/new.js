@@ -1,4 +1,4 @@
-App.Views.NewSubscriptionView = Backbone.View.extend({
+App.Views.SubscriptionNewView = Backbone.View.extend({
     template: JST['subscriptions/new'],
     events: {
         'submit form': 'submit'

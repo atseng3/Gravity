@@ -1,4 +1,4 @@
-App.Views.NewUserView = Backbone.View.extend({
+App.Views.UserNewView = Backbone.View.extend({
     template: JST['users/new'],
     events: {
         "submit form": "submit"

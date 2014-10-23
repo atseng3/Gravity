@@ -7,6 +7,7 @@ class SubscriptionsController < ApplicationController
   # GET /subscriptions
   # GET /subscriptions.json
   def index
+    sleep 3
     @subscriptions = Subscription.all
     render :json => @subscriptions
     # render :index

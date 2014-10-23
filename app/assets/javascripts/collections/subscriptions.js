@@ -10,7 +10,24 @@ App.Collections.Subscriptions = Backbone.Collection.extend({
    // initialize: function(models, options) {
    //     this.todo = options.todo;
    // },
-   model: App.Models.Subscription
+   model: App.Models.Subscription,
+   
+   getOrFetch: function(id) {
+       var subscriptions = this;
+       var model;
+       if(model = this.get(id)) {
+           return model;
+       } else {
+           model = new App.Models.Subscription({ id: id });
+           model.fetch({
+               success: function() {
+                   subscriptions.add(model);
+               }
+           });
+           return model;
+       }
+       
+   }
 });
 
 // way to use nested collections url way

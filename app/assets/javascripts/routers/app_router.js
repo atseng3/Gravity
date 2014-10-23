@@ -3,7 +3,8 @@ App.Routers.AppRouter = Backbone.Router.extend({
     "": "SIHP",
     "users": "showUsers",
     "users/new": "userNew",
-    "subscriptions": "showSubscriptions",
+    "subscriptions": "subscriptionsIndex",
+    "subscriptions/:id": "subscriptionsShow",
     "todos/new": "todosNew",
     "todos/:id": "todosShow"
   },
@@ -13,35 +14,44 @@ App.Routers.AppRouter = Backbone.Router.extend({
       this._swapView(SIHPView);
   },
   
-  showSubscriptions: function() {
+  subscriptionsShow: function(id) {
+      var model = App.Collections.subscriptions.getOrFetch(id);
+      var SubscriptionShowView = new App.Views.SubscriptionShowView({
+          model: model
+      });
+      
+      this._swapView(SubscriptionShowView);
+  },
+  
+  subscriptionsIndex: function() {
       App.Collections.subscriptions.fetch();
-      var SubscriptionsView = new App.Views.SubscriptionsView({
+      var SubscriptionsIndexView = new App.Views.SubscriptionsIndexView({
           collection: App.Collections.subscriptions
       });
-      var newSubscriptionView = new App.Views.NewSubscriptionView({});
-      // this._swapView(SubscriptionsView);
-      $('body').html(SubscriptionsView.render().$el);
-      $('body').append(newSubscriptionView.render().$el);
+      // var SubscriptionNewView = new App.Views.SubscriptionNewView({});
+      this._swapView(SubscriptionsIndexView);
+      // $('body').html(SubscriptionsIndexView.render().$el);
+      // $('body').append(SubscriptionNewView.render().$el);
       // var jointView = SubscriptionsView.render().$el + newSubscriptionView.render().$el;
       // $('body').html(jointView);
   },
   
   subscriptionsNew: function() {
-      var newSubscriptionView = new App.Views.NewSubscriptionView({});
-      this._swapView(newSubscriptionView);
+      var SubscriptionNewView = new App.Views.SubscriptionNewView({});
+      this._swapView(SubscriptionNewView);
   },
   
   showUsers: function() {
       App.Collections.users.fetch();
-      var UsersView = new App.Views.UsersView({
+      var UsersIndexView = new App.Views.UsersIndexView({
           collection: App.Collections.users
       });
-      this._swapView(UsersView);
+      this._swapView(UsersIndexView);
   },
   
   userNew: function() {
-     var newUserView = new App.Views.NewUserView({});
-     this._swapView(newUserView);
+     var UserView = new App.Views.UserNewView({});
+     this._swapView(UserNewView);
   },
 
   todosNew: function () {
