@@ -12,7 +12,8 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    render :json => @user
+    # render :json => @user
+    render :show
   end
   
   # GET /users/new

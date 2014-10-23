@@ -8,6 +8,7 @@ window.App = {
   initialize: function () {
       App.Collections.users = new App.Collections.Users();
       App.Collections.subscriptions = new App.Collections.Subscriptions();
+      App.Collections.user_subscriptions = new App.Collections.UserSubscriptions();
       // App.Collections.users.fetch();
       new App.Routers.AppRouter();
       Backbone.history.start();

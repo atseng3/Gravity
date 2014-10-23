@@ -26,7 +26,6 @@ App.Collections.Subscriptions = Backbone.Collection.extend({
            });
            return model;
        }
-       
    }
 });
 

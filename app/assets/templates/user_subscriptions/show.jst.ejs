@@ -1,0 +1,10 @@
+<h3>Expires: <%= user_subscription.get('expires_at') %></h3>
+
+Reminders: 
+<ul>
+    <% user_subscription.reminders().each(function(reminder) { %>
+        <li><%= reminder.get('days')%> Days before expiration date</li>
+    <% }) %>
+</ul>
+
+<a href="/#subscriptions">Back to Subscriptions</a>

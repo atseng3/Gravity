@@ -13,14 +13,16 @@ class UserSubscriptionsController < ApplicationController
   # GET /user_subscriptions.json
   def index
     @user_subscriptions = UserSubscription.all
-    render :index
+    # render :index
+    render :json => @user_subscriptions
   end
   
   # GET /user_subscriptions/1
   # GET /user_subscriptions/1.json
   def show
     @user_subscription = UserSubscription.find(params[:id])
-    render :show
+    # render :show
+    render :json => @user_subscription
   end
   
   # GET /user_subscriptions/new

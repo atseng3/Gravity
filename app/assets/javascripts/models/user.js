@@ -1,5 +1,5 @@
 App.Models.User = Backbone.Model.extend({
-    urlRoot: "/users"
+    urlRoot: "/users",
 
     // todo.save => saves it to the backend
     
@@ -8,5 +8,8 @@ App.Models.User = Backbone.Model.extend({
     // user1.set({id: 1})
     // user1.fetch() --> this gets user with id 1
     // user.save()   --> this saves user with id 1
-    
+   subscriptions: function() {
+       this._subscriptions = this._subscriptions || new App.Collections.UserSubscriptions
+       
+   } 
 });

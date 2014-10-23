@@ -1,0 +1,7 @@
+<h3><%= @user.email %></h3>
+
+<ul>
+    <% @user.subscriptions.each do |subscription| %>
+        <li><%= subscription.site %></li>
+    <% end %>
+</ul>

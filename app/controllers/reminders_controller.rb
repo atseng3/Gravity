@@ -7,9 +7,11 @@ class RemindersController < ApplicationController
   # GET /reminders
   # GET /reminders.json
   def index
-    @reminders = Reminder.all
-    @user_subscription = UserSubscription.find(params[:user_subscription_id])
-    render :index
+    # @reminders = Reminder.all
+    # @user_subscription = UserSubscription.find(params[:user_subscription_id])
+    # render :index
+    @reminders = UserSubscription.find(params[:user_subscription_id]).reminders
+    render :json => @reminders
   end
   
   # GET /reminders/1

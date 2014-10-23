@@ -1,13 +1,13 @@
-App.Views.SubscriptionShowView = Backbone.View.extend({
-    template: JST['subscriptions/show'],
+App.Views.UserShowView = Backbone.View.extend({
+    template: JST['users/show'],
     
     initialize: function(options) {
-        this.listenTo(this.model, "sync", this.render);
+        // this.listenTo(this.model, "sync", this.render);
     },
     
     render: function() {
         var renderedContent = this.template({
-            subscription: this.model
+            user: this.model
         });
         this.$el.html(renderedContent);
         return this;

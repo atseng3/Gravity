@@ -1,0 +1,12 @@
+<h1>All User Subscriptions</h1>
+<ul>
+    <% user_subscriptions.each(function(user_subscription) { %>
+        <li>
+            <a href="#user_subscriptions/<%= user_subscription.id %>">
+                User: <%= user_subscription.escape("user_id") %><br>
+                Subscription: <%= user_subscription.escape("subscription_id") %><br>
+                Expires: <%= user_subscription.escape("expires_at") %>
+            </a>
+        </li>
+    <% }) %>
+</ul>

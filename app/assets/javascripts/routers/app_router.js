@@ -1,10 +1,15 @@
 App.Routers.AppRouter = Backbone.Router.extend({
   routes: {
     "": "SIHP",
-    "users": "showUsers",
+    "users": "usersIndex",
     "users/new": "userNew",
+    "users/:id": "userShow",
     "subscriptions": "subscriptionsIndex",
-    "subscriptions/:id": "subscriptionsShow",
+    "subscriptions/:id": "subscriptionShow",
+    "user_subscriptions": "user_subscriptionsIndex",
+    "user_subscriptions/:id": "user_subscriptionShow",
+    
+    
     "todos/new": "todosNew",
     "todos/:id": "todosShow"
   },
@@ -14,7 +19,26 @@ App.Routers.AppRouter = Backbone.Router.extend({
       this._swapView(SIHPView);
   },
   
-  subscriptionsShow: function(id) {
+  user_subscriptionShow: function(id) {
+      var model = App.Collections.user_subscriptions.getOrFetch(id);
+      model.reminders().fetch();
+      var UserSubscriptionShowView = new App.Views.UserSubscriptionShowView({
+          model: model
+      });
+      
+      this._swapView(UserSubscriptionShowView);
+  },
+  
+  user_subscriptionsIndex: function() {
+      App.Collections.user_subscriptions.fetch();
+      var UserSubscriptionsIndexView = new App.Views.UserSubscriptionsIndexView({
+          collection: App.Collections.user_subscriptions
+      });
+      
+      this._swapView(UserSubscriptionsIndexView);
+  },
+  
+  subscriptionShow: function(id) {
       var model = App.Collections.subscriptions.getOrFetch(id);
       var SubscriptionShowView = new App.Views.SubscriptionShowView({
           model: model
@@ -41,7 +65,16 @@ App.Routers.AppRouter = Backbone.Router.extend({
       this._swapView(SubscriptionNewView);
   },
   
-  showUsers: function() {
+  userShow: function(id) {
+      var model = App.Collections.users.getOrFetch(id);
+      var UserShowView = new App.Views.UserShowView({
+          model: model
+      });
+      
+      this._swapView(UserShowView);
+  },
+  
+  usersIndex: function() {
       App.Collections.users.fetch();
       var UsersIndexView = new App.Views.UsersIndexView({
           collection: App.Collections.users
