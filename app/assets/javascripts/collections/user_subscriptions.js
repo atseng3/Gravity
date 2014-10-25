@@ -6,6 +6,7 @@ App.Collections.UserSubscriptions = Backbone.Collection.extend({
         var user_subscriptions = this;
         var model;
         if(model = this.get(id)) {
+            model.fetch();
             return model;
         } else {
             model = new App.Models.UserSubscription({ id: id });
