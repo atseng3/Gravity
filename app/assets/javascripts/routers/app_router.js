@@ -1,6 +1,11 @@
 App.Routers.AppRouter = Backbone.Router.extend({
   routes: {
-    "": "SIHP",
+    // this route defaults to display all of the user's subscriptions
+    "": "all",
+    "active": "active",
+    "cancelled": "cancelled",
+    
+    
     "users": "usersIndex",
     "users/new": "userNew",
     "users/:id": "userShow",
@@ -13,10 +18,46 @@ App.Routers.AppRouter = Backbone.Router.extend({
     "todos/new": "todosNew",
     "todos/:id": "todosShow"
   },
+  
+  // parent pages that i want:
+  // - signed out home page (static page describing the product)
+  // - signed in home page (dynamic page that allows for adding, managing subscriptions)
+  //    - all of my subscriptions (all of the subscriptions that belong to user 1)
+  //    - my active subscriptions (subscriptions that belong to user 1 that are active)
+  //    - my cancelled subscriptions (subscriptions that belong to user 1 that are inactive)
+  
 
-  SIHP: function () {
-      var SIHPView = new App.Views.SIHPView({});
-      this._swapView(SIHPView);
+  all: function () {
+      // this page should have many subviews
+      // for now lets just build the page within this view.
+      App.Collections.subscriptions.fetch();
+      var AllView = new App.Views.AllView({
+          model: App.Models.user,
+          collection: App.Collections.subscriptions
+      });
+      this._swapView(AllView);
+  },
+  
+  active: function () {
+      // this page should have many subviews
+      // for now lets just build the page within this view.
+      App.Collections.subscriptions.fetch();
+      var ActiveView = new App.Views.ActiveView({
+          model: App.Models.user,
+          collection: App.Collections.subscriptions
+      });
+      this._swapView(ActiveView);
+  },
+  
+  cancelled: function () {
+      // this page should have many subviews
+      // for now lets just build the page within this view.
+      App.Collections.subscriptions.fetch();
+      var CancelledView = new App.Views.CancelledView({
+          model: App.Models.user,
+          collection: App.Collections.subscriptions
+      });
+      this._swapView(CancelledView);
   },
   
   user_subscriptionShow: function(id) {

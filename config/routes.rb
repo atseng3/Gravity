@@ -3,10 +3,21 @@ Gravity::Application.routes.draw do
   # get '/sihp' => "static_pages#sihp"
   devise_for :users
   resources :users
+  
+  get '/user/:id/subscriptions' => 'users#subscriptions'
+  
   resources :subscriptions
   resources :user_subscriptions, shallow: true do
     resources :reminders
   end
+  
+  # shallow is equivalent to =>
+  # resources :user_subscriptions do
+  #   resources :reminders, only: [:index, :new, :create]
+  # end
+  # resources :reminders, only: [:show, :edit, :update, :destroy]
+  
+  
   # resources :reminders
   
   # scope '/admin' do

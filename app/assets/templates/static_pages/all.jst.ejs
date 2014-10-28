@@ -1,0 +1,9 @@
+<article class="subscription-content">
+    <h1>ALL</h1>
+
+<%= user.email %>
+<% subscriptions.each(function(subscription) { %>
+    <li><%= subscription.get('site') %></li>
+<% }) %>
+
+</article>

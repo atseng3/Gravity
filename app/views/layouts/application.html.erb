@@ -24,6 +24,12 @@
 <p class="alert"><%= alert %></p>
 <%= link_to 'Home', root_url %>
 
+
+<script type="application/json" id="bootstrapped_data">
+    { "user": <%= current_user.to_json.html_safe %>, "subscriptions": <%= current_user.subscriptions.to_json.html_safe %> }
+</script>
+
+
 <%= yield %>
 
 <!-- Latest compiled and minified JavaScript -->

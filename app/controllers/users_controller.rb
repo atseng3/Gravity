@@ -1,5 +1,14 @@
 class UsersController < ApplicationController
   
+  # GET /users/:id/subscriptions  
+  def subscriptions
+    
+    @subscriptions = current_user.subscriptions 
+    
+    render :json => @subscriptions
+    
+  end
+  
   # GET /users
   # GET /users.json
   def index
