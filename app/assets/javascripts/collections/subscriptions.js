@@ -2,7 +2,11 @@ App.Collections.Subscriptions = Backbone.Collection.extend({
    // url: '/subscriptions',
    
    url: function() {
-       return '/user/' + App.Models.user.get('id') + '/subscriptions'      
+       return '/users/' + App.Models.user.get('id') + '/subscriptions'
+   },
+   
+   active: function() {
+       
    },
    
    // nested collections url way

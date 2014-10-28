@@ -28,8 +28,6 @@ App.Routers.AppRouter = Backbone.Router.extend({
   
 
   all: function () {
-      // this page should have many subviews
-      // for now lets just build the page within this view.
       App.Collections.subscriptions.fetch();
       var AllView = new App.Views.AllView({
           model: App.Models.user,
@@ -39,9 +37,8 @@ App.Routers.AppRouter = Backbone.Router.extend({
   },
   
   active: function () {
-      // this page should have many subviews
-      // for now lets just build the page within this view.
       App.Collections.subscriptions.fetch();
+      // App.Collections.subscriptions.active();
       var ActiveView = new App.Views.ActiveView({
           model: App.Models.user,
           collection: App.Collections.subscriptions
@@ -50,8 +47,6 @@ App.Routers.AppRouter = Backbone.Router.extend({
   },
   
   cancelled: function () {
-      // this page should have many subviews
-      // for now lets just build the page within this view.
       App.Collections.subscriptions.fetch();
       var CancelledView = new App.Views.CancelledView({
           model: App.Models.user,
