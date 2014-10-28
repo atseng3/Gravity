@@ -6,7 +6,6 @@ App.Views.AllView = Backbone.View.extend({
     },
     
     render: function() {
-        console.log('render called');
         
         var SideBarView = new App.Views.SideBarView({
             page: 'all'
