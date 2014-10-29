@@ -9,6 +9,24 @@ class UserSubscriptionsController < ApplicationController
   # t.integer "days", default_to: 1
   # t.boolean "active", default_to: true
   
+  def all
+    @subscriptions = current_user.subscriptions
+    
+    render :json => @subscriptions
+  end
+  
+  def active
+    @subscriptions = current_user.active_subscriptions
+    
+    render :json => @subscriptions
+  end
+  
+  def cancelled
+    @subscriptions = current_user.cancelled_subscriptions
+    
+    render :json => @subscriptions
+  end
+  
   # GET /user_subscriptions
   # GET /user_subscriptions.json
   def index

@@ -4,7 +4,13 @@ Gravity::Application.routes.draw do
   devise_for :users
   resources :users
   
-  get '/users/:id/subscriptions' => 'users#subscriptions'
+  # get '/users/:id/subscriptions' => 'users#subscriptions'
+  
+  get '/user_subscriptions/all' => 'user_subscriptions#all'
+  
+  get '/user_subscriptions/active' => 'user_subscriptions#active'
+  
+  get '/user_subscriptions/cancelled' => 'user_subscriptions#cancelled'
   
   
   resources :subscriptions
