@@ -1,5 +1,6 @@
 App.Views.AllView = Backbone.View.extend({
     template: JST['static_pages/all'],
+    partial: JST['static_pages/_list'],
     
     initialize: function(options) {
         this.listenTo(this.collection, 'sync', this.render);

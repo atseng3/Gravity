@@ -1,5 +1,6 @@
 App.Views.ActiveView = Backbone.View.extend({
     template: JST['static_pages/active'],
+    partial: JST['static_pages/_list'],
     
     initialize: function(options) {
         this.listenTo(this.collection, 'add', this.render);

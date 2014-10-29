@@ -1,7 +1,12 @@
-<h3><%= subscription.get('site') %></h3>
+<article class="subscription-content">
+<h3><a href="<%= subscription.escape('site_link') %>"><%= subscription.escape('site') %></a></h3>
+$<%= subscription.escape('amount') %><br>
+<%= subscription.escape('duration') %> days<br>
 
 
 
 <h4>Reminders</h4>
 
-<a href="/#subscriptions">Back to Subscriptions</a>
+<a href="/#">Back to Subscriptions</a>
+
+</article>

@@ -1,9 +1,4 @@
 <article class="subscription-content">
-    <h1>ALL</h1>
-
-<%= user.email %>
-<% subscriptions.each(function(subscription) { %>
-    <li><a href="#subscriptions/<%= subscription.id %>"><%= subscription.get('site') %></a></li>
-<% }) %>
-
+<h1>ALL</h1>
+<%= this.partial({ user: user, subscriptions: subscriptions }) %>
 </article>

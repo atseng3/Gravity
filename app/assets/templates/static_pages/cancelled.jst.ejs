@@ -1,8 +1,4 @@
 <article class="subscription-content">
-    <h1>CANCELLED</h1>
-    
-<%= user.email %>
-<% subscriptions.each(function(subscription) { %>
-    <li><%= subscription.get('site') %></li>
-<% }) %>
+<h1>CANCELLED</h1>
+<%= this.partial({ user: user, subscriptions: subscriptions }) %>
 </article>
