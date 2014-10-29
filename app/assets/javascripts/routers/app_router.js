@@ -3,9 +3,10 @@ App.Routers.AppRouter = Backbone.Router.extend({
     // this route defaults to display all of the user's subscriptions
     "": "all",
     "active": "active",
-    "cancelled": "cancelled",
+    "expired": "expired",
     "subscriptions/:id": "subscriptionShow",
     
+    // testing....
     
     "users": "usersIndex",
     "users/new": "userNew",
@@ -48,9 +49,9 @@ App.Routers.AppRouter = Backbone.Router.extend({
       this._swapView(ActiveView);
   },
   
-  cancelled: function () {
+  expired: function () {
       App.Collections.subscriptions = new App.Collections.Subscriptions();
-      App.Collections.subscriptions.cancelled();
+      App.Collections.subscriptions.expired();
       var CancelledView = new App.Views.CancelledView({
           model: App.Models.user,
           collection: App.Collections.subscriptions

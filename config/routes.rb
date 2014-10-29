@@ -10,7 +10,7 @@ Gravity::Application.routes.draw do
   
   get '/user_subscriptions/active' => 'user_subscriptions#active'
   
-  get '/user_subscriptions/cancelled' => 'user_subscriptions#cancelled'
+  get '/user_subscriptions/expired' => 'user_subscriptions#expired'
   
   
   resources :subscriptions

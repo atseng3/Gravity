@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
     return Subscription.find(active_ids)
   end
   
-  def cancelled_subscriptions
+  def expired_subscriptions
     
     # compare current time and all of current_user.user_subscription
     active_subscriptions = []

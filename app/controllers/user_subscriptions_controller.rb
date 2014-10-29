@@ -21,8 +21,8 @@ class UserSubscriptionsController < ApplicationController
     render :json => @subscriptions
   end
   
-  def cancelled
-    @subscriptions = current_user.cancelled_subscriptions
+  def expired
+    @subscriptions = current_user.expired_subscriptions
     
     render :json => @subscriptions
   end

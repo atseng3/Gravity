@@ -8,19 +8,17 @@ App.Collections.Subscriptions = Backbone.Collection.extend({
    url: '/user_subscriptions',
    
    active: function() {
-       $.ajax({
-           url: '/user_subscriptions/active',
-           type: 'get',
-           context: this,
-           success: function(data) {
-               this.set(data);
-           }
-       });
+       this._getSubscriptions('/active');
    },
    
-   cancelled: function() {
+   expired: function() {
+       this._getSubscriptions('/expired');
+   },
+   
+   _getSubscriptions: function(type) {
        $.ajax({
-           url: '/user_subscriptions/cancelled',
+           url: this.url + type,
+           // url: '/user_subscriptions/expired',
            type: 'get',
            context: this,
            success: function(data) {
