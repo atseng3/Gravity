@@ -49,5 +49,21 @@ class User < ActiveRecord::Base
   
   def cancelled_subscriptions
     
+    # compare current time and all of current_user.user_subscription
+    active_subscriptions = []
+    curr_time = Time.now
+    self.user_subscriptions.each do |user_subscription|
+      if curr_time > user_subscription.expires_at
+        active_subscriptions.push(user_subscription)
+      end
+    end
+    
+    # take out ids from array
+    active_ids = []
+    active_subscriptions.each do |active_subscription|
+      active_ids.push(active_subscription.subscription_id)
+    end
+    
+    return Subscription.find(active_ids)
   end
 end

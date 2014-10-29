@@ -130,4 +130,4 @@ Backbone.TableView = Backbone.CompositeView.extend({
   }
 });
 
-// $(App.initialize);
+$(App.initialize);

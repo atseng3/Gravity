@@ -3,7 +3,7 @@
 
 <%= user.email %>
 <% subscriptions.each(function(subscription) { %>
-    <li><%= subscription.get('site') %></li>
+    <li><a href="#subscriptions/<%= subscription.id %>"><%= subscription.get('site') %></a></li>
 <% }) %>
 
 </article>

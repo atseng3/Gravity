@@ -2,7 +2,7 @@ App.Views.ActiveView = Backbone.View.extend({
     template: JST['static_pages/active'],
     
     initialize: function(options) {
-        // this.listenTo(this.collection, 'sync', this.render);
+        this.listenTo(this.collection, 'add', this.render);
     },
     
     render: function() {

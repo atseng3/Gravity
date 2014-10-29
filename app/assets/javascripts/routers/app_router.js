@@ -4,13 +4,14 @@ App.Routers.AppRouter = Backbone.Router.extend({
     "": "all",
     "active": "active",
     "cancelled": "cancelled",
+    "subscriptions/:id": "subscriptionShow",
     
     
     "users": "usersIndex",
     "users/new": "userNew",
     "users/:id": "userShow",
     "subscriptions": "subscriptionsIndex",
-    "subscriptions/:id": "subscriptionShow",
+    // "subscriptions/:id": "subscriptionShow",
     "user_subscriptions": "user_subscriptionsIndex",
     "user_subscriptions/:id": "user_subscriptionShow",
     
@@ -38,8 +39,8 @@ App.Routers.AppRouter = Backbone.Router.extend({
   },
   
   active: function () {
-      App.Collections.subscriptions.fetch();
-      // App.Collections.subscriptions.active();
+      App.Collections.subscriptions = new App.Collections.Subscriptions();
+      App.Collections.subscriptions.active();
       var ActiveView = new App.Views.ActiveView({
           model: App.Models.user,
           collection: App.Collections.subscriptions
@@ -48,13 +49,25 @@ App.Routers.AppRouter = Backbone.Router.extend({
   },
   
   cancelled: function () {
-      App.Collections.subscriptions.fetch();
+      App.Collections.subscriptions = new App.Collections.Subscriptions();
+      App.Collections.subscriptions.cancelled();
       var CancelledView = new App.Views.CancelledView({
           model: App.Models.user,
           collection: App.Collections.subscriptions
       });
       this._swapView(CancelledView);
   },
+  
+  subscriptionShow: function(id) {
+      App.Collections.subscriptions = new App.Collections.Subscriptions();
+      var model = App.Collections.subscriptions.getOrFetch(id);
+      var SubscriptionShowView = new App.Views.SubscriptionShowView({
+          model: model
+      });
+      this._swapView(SubscriptionShowView);
+  },
+  
+  ////////// testing
   
   user_subscriptionShow: function(id) {
       var model = App.Collections.user_subscriptions.getOrFetch(id);
@@ -75,14 +88,14 @@ App.Routers.AppRouter = Backbone.Router.extend({
       this._swapView(UserSubscriptionsIndexView);
   },
   
-  subscriptionShow: function(id) {
-      var model = App.Collections.subscriptions.getOrFetch(id);
-      var SubscriptionShowView = new App.Views.SubscriptionShowView({
-          model: model
-      });
-      
-      this._swapView(SubscriptionShowView);
-  },
+  // subscriptionShow: function(id) {
+  //     var model = App.Collections.subscriptions.getOrFetch(id);
+  //     var SubscriptionShowView = new App.Views.SubscriptionShowView({
+  //         model: model
+  //     });
+  //
+  //     this._swapView(SubscriptionShowView);
+  // },
   
   subscriptionsIndex: function() {
       App.Collections.subscriptions.fetch();

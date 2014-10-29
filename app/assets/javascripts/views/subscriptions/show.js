@@ -6,6 +6,12 @@ App.Views.SubscriptionShowView = Backbone.View.extend({
     },
     
     render: function() {
+        debugger
+        // var SideBarView = new App.Views.SideBarView({
+        //     page: 'all'
+        // });
+        // this.$el.html(SideBarView.render().$el);
+        //
         var renderedContent = this.template({
             subscription: this.model
         });
