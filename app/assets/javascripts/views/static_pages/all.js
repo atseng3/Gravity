@@ -11,7 +11,7 @@ App.Views.AllView = Backbone.View.extend({
             page: 'all'
         });
         this.$el.html(SideBarView.render().$el);
-        
+        debugger
         var renderedContent = this.template({
            user: this.model,
            subscriptions: this.collection

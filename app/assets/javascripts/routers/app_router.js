@@ -28,6 +28,7 @@ App.Routers.AppRouter = Backbone.Router.extend({
   
 
   all: function () {
+      App.Collections.subscriptions = new App.Collections.Subscriptions();
       App.Collections.subscriptions.fetch();
       var AllView = new App.Views.AllView({
           model: App.Models.user,

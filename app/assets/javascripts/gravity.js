@@ -10,7 +10,7 @@ window.App = {
       var parsed_data = JSON.parse($('#bootstrapped_data').html());
       App.Models.user = new App.Models.User(parsed_data.user, { parse: true });
       // App.Collections.user_subscriptions = new App.Collections.UserSubscriptions();
-      App.Collections.subscriptions = new App.Collections.Subscriptions(parsed_data.subscriptions, { parse: true });
+      // App.Collections.subscriptions = new App.Collections.Subscriptions(parsed_data.subscriptions, { parse: true });
 
       
       

@@ -12,9 +12,22 @@ class UserSubscriptionsController < ApplicationController
   # GET /user_subscriptions
   # GET /user_subscriptions.json
   def index
-    @user_subscriptions = UserSubscription.all
-    # render :index
-    render :json => @user_subscriptions
+    # @user_subscriptions = UserSubscription.all
+    # @user_subscriptions = UserSubscription.where( user_id: current_user )
+    #
+    # # find the subscriptions here based on the user_subscriptions
+    # sub_id_arr = [];
+    # @user_subscriptions.each do |u_s|
+    #   sub_id_arr.push(u_s.subscription_id)
+    # end
+    #
+    # render :json => Subscription.find(sub_id_arr)
+    
+    # or.....
+    
+    @subscriptions = current_user.subscriptions
+    
+    render :json => @subscriptions
   end
   
   # GET /user_subscriptions/1
