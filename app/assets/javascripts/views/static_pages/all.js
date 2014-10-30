@@ -2,6 +2,8 @@ App.Views.AllView = Backbone.PageView.extend({
     template: JST['static_pages/all'],
     partial: JST['static_pages/_list'],
     
+    className: 'page',
+    
     initialize: function(options) {
         this.sidebarView = options.sidebarView;
         this.listenTo(this.collection, 'sync', this.render);

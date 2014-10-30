@@ -83,11 +83,13 @@ App.Routers.AppRouter = Backbone.Router.extend({
   
   subscriptionShow: function(id) {
       App.Collections.subscriptions = new App.Collections.Subscriptions();
+      
       var model = App.Collections.subscriptions.getOrFetch(id);
+      model.reminders().fetch();
       this.SideBarView = (this.SideBarView || new App.Views.SideBarView({
+          // default tab to 'all'
           page: 'all'
       }));
-      // this.SideBarView.page = '';
       
       var SubscriptionShowView = new App.Views.SubscriptionShowView({
           sidebarView: this.SideBarView,

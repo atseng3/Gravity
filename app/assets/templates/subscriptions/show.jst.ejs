@@ -1,9 +1,9 @@
 <article class="subscription-content">
-<h3><a href="<%= subscription.escape('site_link') %>"><%= subscription.escape('site') %></a></h3>
+<div class="page-header">Subscription > <%= subscription.escape('site') %></div>
 $<%= subscription.escape('amount') %><br>
 <%= subscription.escape('duration') %> days<br>
 
-
+<a class="btn btn-default btn-lg" href="<%= subscription.escape('site_link') %>">CANCEL</a>
 
 <h4>Reminders</h4>
 
