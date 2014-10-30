@@ -32,7 +32,13 @@ App.Routers.AppRouter = Backbone.Router.extend({
   all: function () {
       App.Collections.subscriptions = new App.Collections.Subscriptions();
       App.Collections.subscriptions.fetch();
+      this.SideBarView = (this.SideBarView || new App.Views.SideBarView({
+          page: 'all'
+      }));
+      this.SideBarView.page = 'all';
+      
       var AllView = new App.Views.AllView({
+          sidebarView: this.SideBarView,
           model: App.Models.user,
           collection: App.Collections.subscriptions
       });
@@ -41,8 +47,16 @@ App.Routers.AppRouter = Backbone.Router.extend({
   
   active: function () {
       App.Collections.subscriptions = new App.Collections.Subscriptions();
-      App.Collections.subscriptions.active();
+      App.Collections.subscriptions.fetch({
+          url: '/user_subscriptions/active'
+      });
+      this.SideBarView = (this.SideBarView || new App.Views.SideBarView({
+          page: 'expired'
+      }));
+      this.SideBarView.page = 'active';
+      
       var ActiveView = new App.Views.ActiveView({
+          sidebarView: this.SideBarView,
           model: App.Models.user,
           collection: App.Collections.subscriptions
       });
@@ -51,18 +65,32 @@ App.Routers.AppRouter = Backbone.Router.extend({
   
   expired: function () {
       App.Collections.subscriptions = new App.Collections.Subscriptions();
-      App.Collections.subscriptions.expired();
-      var CancelledView = new App.Views.CancelledView({
+      App.Collections.subscriptions.fetch({
+          url: '/user_subscriptions/expired'
+      });
+      this.SideBarView = (this.SideBarView || new App.Views.SideBarView({
+          page: 'expired'
+      }));
+      this.SideBarView.page = 'expired';
+      
+      var ExpiredView = new App.Views.ExpiredView({
+          sidebarView: this.SideBarView,
           model: App.Models.user,
           collection: App.Collections.subscriptions
       });
-      this._swapView(CancelledView);
+      this._swapView(ExpiredView);
   },
   
   subscriptionShow: function(id) {
       App.Collections.subscriptions = new App.Collections.Subscriptions();
       var model = App.Collections.subscriptions.getOrFetch(id);
+      this.SideBarView = (this.SideBarView || new App.Views.SideBarView({
+          page: 'all'
+      }));
+      // this.SideBarView.page = '';
+      
       var SubscriptionShowView = new App.Views.SubscriptionShowView({
+          sidebarView: this.SideBarView,
           model: model
       });
       this._swapView(SubscriptionShowView);
@@ -157,7 +185,6 @@ App.Routers.AppRouter = Backbone.Router.extend({
     if (this.currentView) {
       this.currentView.remove();
     }
-
     $("body").html(newView.render().$el);
 
     this.currentView = newView;

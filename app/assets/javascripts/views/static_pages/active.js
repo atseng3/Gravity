@@ -1,17 +1,14 @@
-App.Views.ActiveView = Backbone.View.extend({
+App.Views.ActiveView = Backbone.PageView.extend({
     template: JST['static_pages/active'],
     partial: JST['static_pages/_list'],
     
     initialize: function(options) {
-        this.listenTo(this.collection, 'add', this.render);
+        this.sidebarView = options.sidebarView;
+        this.listenTo(this.collection, 'sync', this.render);
     },
     
     render: function() {
-        
-        var SideBarView = new App.Views.SideBarView({
-            page: 'active'
-        });
-        this.$el.html(SideBarView.render().$el);
+        this.$el.html(this.sidebarView.render().$el);
         
         var renderedContent = this.template({
            user: this.model,

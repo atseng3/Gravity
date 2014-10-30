@@ -7,26 +7,6 @@ App.Collections.Subscriptions = Backbone.Collection.extend({
    
    url: '/user_subscriptions',
    
-   active: function() {
-       this._getSubscriptions('/active');
-   },
-   
-   expired: function() {
-       this._getSubscriptions('/expired');
-   },
-   
-   _getSubscriptions: function(type) {
-       $.ajax({
-           url: this.url + type,
-           // url: '/user_subscriptions/expired',
-           type: 'get',
-           context: this,
-           success: function(data) {
-               this.set(data);
-           }
-       });
-   },
-   
    // nested collections url way
    //
    // url: function() {

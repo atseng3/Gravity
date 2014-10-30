@@ -23,6 +23,13 @@ window.App = {
   }
 };
 
+Backbone.PageView = Backbone.View.extend({
+    // remove: function() {
+    //     Backbone.View.prototype.remove.call(this);
+    //     this.subView.remove();
+    // }
+});
+
 Backbone.CompositeView = Backbone.View.extend({
   addSubview: function (selector, subview) {
     this.subviews(selector).push(subview);

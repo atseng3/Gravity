@@ -1,17 +1,15 @@
-App.Views.AllView = Backbone.View.extend({
+App.Views.AllView = Backbone.PageView.extend({
     template: JST['static_pages/all'],
     partial: JST['static_pages/_list'],
     
     initialize: function(options) {
+        this.sidebarView = options.sidebarView;
         this.listenTo(this.collection, 'sync', this.render);
     },
     
     render: function() {
+        this.$el.html(this.sidebarView.render().$el);
         
-        var SideBarView = new App.Views.SideBarView({
-            page: 'all'
-        });
-        this.$el.html(SideBarView.render().$el);
         var renderedContent = this.template({
            user: this.model,
            subscriptions: this.collection

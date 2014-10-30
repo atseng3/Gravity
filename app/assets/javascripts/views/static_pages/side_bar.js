@@ -11,6 +11,8 @@ App.Views.SideBarView = Backbone.View.extend({
     
     render: function() {
         
+        console.log('sidebar render');
+        
         var renderedContent = this.template();
         
         this.$el.html(renderedContent);
