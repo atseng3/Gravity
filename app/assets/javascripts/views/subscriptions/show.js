@@ -1,5 +1,6 @@
 App.Views.SubscriptionShowView = Backbone.PageView.extend({
     template: JST['subscriptions/show'],
+    className: 'page',
     
     initialize: function(options) {
         this.sidebarView = options.sidebarView;

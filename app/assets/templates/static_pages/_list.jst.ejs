@@ -3,10 +3,10 @@
 <div class="subscriptions-container">
 <% subscriptions.each(function(subscription) { %>
     <div class="subscriptions-item">
-        <div class="subscriptions-item__logo"></div>
+        <a class="subscriptions-item__logo" href="#subscriptions/<%= subscription.id %>"></a>
         <div class="subscriptions-item-desc">
-            <div class="subscriptions-item-desc__cancel">CANCEL</div>
             <div class="subscriptions-item-desc__expires"><span class="subscriptions-item-desc-expires__num">5</span> days left</div>
+            <a class="subscriptions-item-desc__cancel" href="<%= subscription.escape('site_link') %>">CANCEL</a>
             <a class="subscriptions-item-desc__site" href="#subscriptions/<%= subscription.id %>"><%= subscription.escape('site') %></a>
             <div class="subscriptions-item-desc__amount">$<%= subscription.escape('amount')%></div>
         </div>
