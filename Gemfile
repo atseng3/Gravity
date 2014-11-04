@@ -13,10 +13,14 @@ gem 'newrelic_rpm'
 gem 'devise'
 
 # Use bootstrap css
-gem 'bootstrap-sass', '~> 3.1.1.0'
+gem 'bootstrap-sass', '~> 3.2.0'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', '>= 3.2'
+
+# use autoprefixer with bootstrap to add browser vendor prefixes automatically
+# https://github.com/ai/autoprefixer-rails
+gem 'autoprefixer-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

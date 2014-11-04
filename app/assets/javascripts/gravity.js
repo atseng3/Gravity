@@ -48,7 +48,6 @@ Backbone.PageView = Backbone.View.extend({
         event.preventDefault();        
         $(event.currentTarget).removeClass('hide-new').addClass('add-new').text('Add New');
         this.newView.remove();
-        debugger
     }
 });
 
