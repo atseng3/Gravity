@@ -20,7 +20,7 @@ window.App = {
       // // App.Collections.users.fetch();
       new App.Routers.AppRouter();
       Backbone.history.start();
-  }
+  }  
 };
 
 Backbone.PageView = Backbone.View.extend({
@@ -28,6 +28,28 @@ Backbone.PageView = Backbone.View.extend({
     //     Backbone.View.prototype.remove.call(this);
     //     this.subView.remove();
     // }
+    initialize: function() {
+        
+    },
+    events: {
+        'click .add-new': 'addNew',
+        'click .hide-new': 'hideNew'
+    },
+    addNew: function(event) {
+        event.preventDefault();
+        $(event.currentTarget).removeClass('add-new').addClass('hide-new').text('Hide');
+        
+        if(!this.newView) {
+            this.newView = new App.Views.UserSubscriptionNewView();
+        }
+        this.$('.page-header').after(this.newView.render().$el);
+    },
+    hideNew: function(event) {
+        event.preventDefault();        
+        $(event.currentTarget).removeClass('hide-new').addClass('add-new').text('Add New');
+        this.newView.remove();
+        debugger
+    }
 });
 
 Backbone.CompositeView = Backbone.View.extend({
